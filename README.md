@@ -1,4 +1,4 @@
-# DeepLab_pretrained
+# ResNet_pretrained
 
 ## Training the network
 To train the network, run:
