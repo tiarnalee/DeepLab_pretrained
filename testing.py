@@ -76,7 +76,7 @@ val_transforms = transforms.Compose([
 classes=['3A', '3B', '3C', '4A', '4B', '4C']
 results=[]
 
-# test_cases=np.load(max(glob.glob('/home/tle19/Desktop/ResNet_pretrained/results/*npy'), key=os.path.getctime))
+test_cases=np.load(max(glob.glob('/home/tle19/Desktop/ResNet_pretrained/results/*npy'), key=os.path.getctime))
 test_dataset = hair_dataset(test_cases, transforms=val_transforms)
 test_dl = DataLoader(test_dataset, batch_size=len(test_cases), shuffle=False, num_workers=4, pin_memory=True)
 
@@ -129,14 +129,7 @@ with open('/home/tle19/Desktop/ResNet_pretrained/results/params.json') as f:
   
     _ = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=labels_used).plot()
 
-    plt.title(str(x) + '/18 frozen layers', fontsize=20)
-
     # plt.savefig('/home/tle19/Desktop/ResNet_pretrained/results/test_CM.png')
-    results.append(np.hstack((x, np.round(cm.diagonal()/cm.sum(axis=1) ,3), epoch_acc.cpu().detach().numpy())))
-    YT=np.array(YT)
-    YP=np.array(YP)
-    wrong=np.array([i.split('/')[-2:] for i in test_cases[np.where(YP!=YT)]])
-    
  
     #%%
 im_paths=[]
