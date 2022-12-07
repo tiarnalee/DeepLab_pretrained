@@ -76,8 +76,6 @@ val_transforms = transforms.Compose([
 classes=['3A', '3B', '3C', '4A', '4B', '4C']
 results=[]
 
-_=[os.mkdir(i) for i in ['/home/tle19/Desktop/ResNet_pretrained/frozen_layers/CM/', '/home/tle19/Desktop/ResNet_pretrained/frozen_layers/incorrect_pred/' ] if os.path.isdir(i)==False ]
-
 # test_cases=np.load(max(glob.glob('/home/tle19/Desktop/ResNet_pretrained/results/*npy'), key=os.path.getctime))
 test_dataset = hair_dataset(test_cases, transforms=val_transforms)
 test_dl = DataLoader(test_dataset, batch_size=len(test_cases), shuffle=False, num_workers=4, pin_memory=True)
